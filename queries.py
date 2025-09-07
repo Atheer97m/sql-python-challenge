@@ -11,7 +11,7 @@ def list_of_directors(db):
     return [row[0] for row in results]
 
 def list_of_movies_about_river(db):
-    query = "SELECT title FROM movies WHERE title LIKE '%river%' ORDER BY title ASC;"
+    query = "SELECT title FROM movies WHERE LOWER(title) LIKE '%river%' ORDER BY title ASC;"
     db.execute(query)
     results = db.fetchall()
     return [row[0] for row in results]
@@ -27,6 +27,7 @@ def list_of_movies_longer_than(db, min_length):
     db.execute(query, [min_length])
     results = db.fetchall()
     return [row[0] for row in results]
+
 
 
 
